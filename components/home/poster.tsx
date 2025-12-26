@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Play, Tv } from "lucide-react";
 import { Badge } from "@/components/selia/badge";
@@ -15,13 +16,16 @@ export function AnimePoster({ anime }: { anime: Anime }) {
     <div className="relative group flex flex-col gap-3">
       <Card className="relative aspect-[2/3] w-full overflow-hidden border-none ring-1 ring-white/5 shadow-none bg-muted/5">
         {!imageError ? (
-          <img
-            src={anime.poster}
-            alt={anime.title}
-            referrerPolicy="no-referrer"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => setImageError(true)}
-          />
+            <Image
+              src={anime.poster}
+              alt={anime.title}
+              referrerPolicy="no-referrer"
+              fill
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="100vw"
+              priority={false}
+              onError={() => setImageError(true)}
+            />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center bg-muted/10">
             <Tv size={32} className="text-muted-foreground opacity-20" />

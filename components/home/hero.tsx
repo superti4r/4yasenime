@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Play, Info } from "lucide-react";
+import { Play } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/selia/badge";
 import { Button } from "@/components/selia/button";
@@ -13,11 +14,14 @@ export function HeroSection({ featured }: { featured: Anime }) {
   return (
     <section className="relative w-full h-[70vh] md:h-[85vh] flex items-end px-6 md:px-16 pb-20 overflow-hidden bg-background">
       <div className="absolute inset-0 block">
-        <img
+        <Image
           src={featured.poster}
           alt="Featured Background"
           referrerPolicy="no-referrer"
+          fill
           className="w-full h-full object-cover object-center opacity-50 transition-opacity duration-700"
+          sizes="100vw"
+          priority
           style={{ filter: "brightness(0.7)" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
