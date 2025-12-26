@@ -31,12 +31,6 @@ export default async function Home() {
                 Rilis Terbaru
               </h2>
             </div>
-            <Link
-              href="/browse"
-              className="text-xs font-black text-muted-foreground hover:text-primary flex items-center gap-2 transition-all uppercase tracking-widest group"
-            >
-              Lihat Semua
-            </Link>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
