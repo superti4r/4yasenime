@@ -1,7 +1,6 @@
 import { animeService } from "@/services/latest-releases";
 import { HeroSection } from "@/components/home/hero";
 import { AnimePoster } from "@/components/home/poster";
-import { Footer } from "@/components/extra/footer";
 import Link from "next/link";
 import { Anime } from "@/types/anime";
 
@@ -55,8 +54,6 @@ export default async function Home() {
           )}
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { Theme } from "@/components/plugin/theme";
 import { Dock } from "@/components/extra/dock";
 import "./globals.css";
+import { Footer } from "@/components/extra/footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -33,6 +34,7 @@ export default function RootLayout({
         >
           <main className="min-h-screen pb-24">{children}</main>
           <Dock />
+          <Footer />
         </Theme>
       </body>
     </html>
