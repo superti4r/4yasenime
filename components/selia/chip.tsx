@@ -2,7 +2,7 @@
 
 import { useRender } from '@base-ui/react/use-render';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 
 export const chipVariants = cva('inline-flex items-center ring font-medium', {
   variants: {
