@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { Theme } from "@/components/plugin/theme";
 import "./globals.css";
 
 
@@ -20,11 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>
-        <div className="root">
-        {children}
-      </div>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body>
+        <Theme attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </Theme>
       </body>
     </html>
   );
