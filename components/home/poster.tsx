@@ -18,12 +18,16 @@ export function AnimePoster({ anime }: { anime: Anime }) {
           <img
             src={anime.poster}
             alt={anime.title}
+            referrerPolicy="no-referrer"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={() => setImageError(true)}
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-muted/10">
-            <Tv size={32} className="opacity-10" />
+          <div className="flex h-full w-full flex-col items-center justify-center bg-muted/10">
+            <Tv size={32} className="text-muted-foreground opacity-20" />
+            <span className="text-[10px] text-muted-foreground mt-2 px-2 text-center line-clamp-1">
+              {anime.title}
+            </span>
           </div>
         )}
 
@@ -33,7 +37,7 @@ export function AnimePoster({ anime }: { anime: Anime }) {
             size="sm-icon"
             pill
             render={<Link href={`/watch/${anime.slug}`} />}
-            className="scale-90 group-hover:scale-110 transition-transform duration-300"
+            className="scale-90 group-hover:scale-110 transition-transform duration-300 shadow-xl shadow-primary/40"
           >
             <Play fill="currentColor" className="ml-0.5" />
           </Button>
@@ -44,7 +48,7 @@ export function AnimePoster({ anime }: { anime: Anime }) {
             variant="secondary"
             size="sm"
             pill
-            className="bg-background/80 backdrop-blur-md border-none font-bold"
+            className="bg-background/80 text-foreground backdrop-blur-md border-none font-bold shadow-sm"
           >
             EP {anime.episode}
           </Badge>
@@ -52,7 +56,7 @@ export function AnimePoster({ anime }: { anime: Anime }) {
       </Card>
 
       <div className="px-1 min-h-[40px]">
-        <h3 className="text-[13px] md:text-sm font-semibold text-foreground/90 line-clamp-2 group-hover:text-primary transition-colors duration-300 leading-tight">
+        <h3 className="text-[13px] md:text-sm font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-300 leading-tight">
           {anime.title}
         </h3>
       </div>

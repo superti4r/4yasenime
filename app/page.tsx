@@ -1,57 +1,62 @@
 import { animeService } from "@/services/latest-releases";
 import { HeroSection } from "@/components/home/hero";
 import { AnimePoster } from "@/components/home/poster";
-import { ChevronRight } from "lucide-react";
+import { Footer } from "@/components/extra/footer";
 import Link from "next/link";
+import { Anime } from "@/types/anime";
 
 export default async function Home() {
-  const response = await animeService.getLatestReleases();
-  const animeList = response.data || [];
-  const featured = animeList[0];
+  let animeList: Anime[] = [];
+  let featured: Anime | null = null;
+
+  try {
+    const response = await animeService.getLatestReleases();
+    animeList = response.data || [];
+    featured = animeList[0] || null;
+  } catch (err) {
+    console.error("Gagal memuat data:", err);
+  }
+
+  const displayedAnime = animeList.slice(0, 4);
 
   return (
-    <div className="w-full pb-32 overflow-x-hidden">
-      <HeroSection featured={featured} />
+    <div className="w-full bg-background min-h-screen">
+      {featured && <HeroSection featured={featured} />}
 
-      <main className="px-6 md:px-16 space-y-12 relative z-10 -mt-10">
-        <div className="space-y-8">
-          <div className="flex items-center justify-between border-b border-white/5 pb-5">
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-6 bg-primary rounded-full shadow-[0_0_10px_rgba(var(--bg-anim-1),0.5)]" />
-              <h2 className="text-lg md:text-2xl font-black italic tracking-tight uppercase">
+      <main className="px-6 md:px-16 relative z-20 -mt-16 pb-24 space-y-16">
+        <section className="space-y-10">
+          <div className="flex items-center justify-between border-b border-white/5 pb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-1.5 h-8 bg-primary rounded-full shadow-[0_0_20px_rgba(var(--primary),0.6)]" />
+              <h2 className="text-2xl md:text-3xl font-black italic tracking-tighter uppercase text-foreground">
                 Rilis Terbaru
               </h2>
             </div>
             <Link
               href="/browse"
-              className="text-[10px] md:text-xs font-black text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors uppercase tracking-[0.2em] group"
+              className="text-xs font-black text-muted-foreground hover:text-primary flex items-center gap-2 transition-all uppercase tracking-widest group"
             >
-              Lihat Semua{" "}
-              <ChevronRight
-                size={14}
-                className="group-hover:translate-x-1 transition-transform"
-              />
+              Lihat Semua
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-5 gap-y-10">
-            {animeList.map((anime) => (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            {displayedAnime.map((anime) => (
               <AnimePoster key={anime.slug} anime={anime} />
             ))}
           </div>
-        </div>
 
-        <footer className="pt-24 pb-12 text-center border-t border-white/5">
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h3 className="text-2xl md:text-4xl font-black italic tracking-tighter opacity-20">
-              4YASENIME
-            </h3>
-            <p className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-[0.3em] font-medium leading-loose px-6">
-              Streaming Anime Gratis Indonesia • Kualitas HD • Tanpa Hambatan
-            </p>
-          </div>
-        </footer>
+          {displayedAnime.length === 0 && (
+            <div className="py-20 text-center">
+              <p className="text-muted-foreground italic">
+                Tidak ada data rilis terbaru saat ini.
+              </p>
+            </div>
+          )}
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

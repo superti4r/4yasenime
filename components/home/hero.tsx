@@ -11,60 +11,71 @@ export function HeroSection({ featured }: { featured: Anime }) {
   if (!featured) return null;
 
   return (
-    <section className="relative w-full h-[60vh] md:h-[80vh] flex items-end px-6 md:px-16 pb-16 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
+    <section className="relative w-full h-[70vh] md:h-[85vh] flex items-end px-6 md:px-16 pb-20 overflow-hidden bg-background">
+      <div className="absolute inset-0 block">
         <img
           src={featured.poster}
-          alt="Hero"
-          className="w-full h-full object-cover object-top opacity-30"
+          alt="Featured Background"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-center opacity-50 transition-opacity duration-700"
+          style={{ filter: "brightness(0.7)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent hidden md:block" />
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-2xl space-y-6"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10 max-w-3xl space-y-6"
       >
-        <div className="space-y-2">
+        <div className="space-y-4">
           <Badge
             variant="primary"
             size="sm"
             pill
-            className="font-black tracking-[0.2em] uppercase"
+            className="font-bold tracking-widest uppercase"
           >
             Platform Stream Anime Gratis
           </Badge>
-          <h1 className="text-4xl md:text-7xl font-black italic tracking-tighter text-foreground leading-[0.95] uppercase drop-shadow-2xl">
+          <h1 className="text-5xl md:text-8xl font-black italic tracking-tighter text-foreground leading-[0.85] uppercase drop-shadow-sm">
             4yasenime
           </h1>
         </div>
 
-        <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-lg">
-          Platform streaming anime gratis. Nonton koleksi terbaru tanpa iklan
-          yang mengganggu dengan antarmuka modern dan responsif.
+        <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-xl drop-shadow-md">
+          Nikmati koleksi anime terbaru secara gratis dengan kualitas terbaik.
+          Pengalaman menonton tanpa iklan yang mengganggu hanya di{" "}
+          <span className="text-foreground font-bold italic underline decoration-primary">
+            4yasenime
+          </span>
+          .
         </p>
 
-        <div className="flex items-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center gap-4 pt-4">
           <Button
             variant="primary"
             size="lg"
             pill
-            className="px-8 md:px-12 font-bold gap-3 flex-1 sm:flex-none shadow-xl shadow-primary/20"
+            className="px-10 font-black gap-3 shadow-2xl shadow-primary/40 group"
             render={<Link href={`/watch/${featured.slug}`} />}
           >
-            <Play size={18} fill="currentColor" />
-            Tonton
+            <Play
+              size={20}
+              fill="currentColor"
+              className="group-hover:scale-110 transition-transform"
+            />
+            TONTON
           </Button>
           <Button
             variant="secondary"
             size="lg"
             pill
-            className="px-6 md:px-8 font-bold gap-3 bg-white/5 backdrop-blur-md"
+            className="px-8 font-bold gap-3 bg-white/5 hover:bg-white/10 backdrop-blur-md text-foreground border border-white/10"
           >
-            <Info size={18} />
-            Detail
+            <Info size={20} />
+            DETAIL
           </Button>
         </div>
       </motion.div>
