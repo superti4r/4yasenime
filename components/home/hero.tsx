@@ -68,15 +68,6 @@ export function HeroSection({ featured }: { featured: Anime }) {
             />
             TONTON
           </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            pill
-            className="px-8 font-bold gap-3 bg-white/5 hover:bg-white/10 backdrop-blur-md text-foreground border border-white/10"
-          >
-            <Info size={20} />
-            DETAIL
-          </Button>
         </div>
       </motion.div>
     </section>

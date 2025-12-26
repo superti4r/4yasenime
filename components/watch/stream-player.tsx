@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Card } from "@/components/selia/card";
 
@@ -11,11 +11,8 @@ export function StreamPlayer({
   activeServer: { server: string; url: string };
   poster: string;
 }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-  }, [activeServer?.url]);
+  const [loadedFor, setLoadedFor] = useState<string | null>(null);
+  const isLoading = loadedFor !== activeServer.url;
 
   return (
     <div className="relative isolate w-full overflow-visible">
@@ -34,19 +31,20 @@ export function StreamPlayer({
               <div className="flex flex-col items-center gap-3 px-4 text-center">
                 <Loader2 className="size-9 sm:size-10 text-primary animate-spin" />
                 <p className="text-[10px] sm:text-xs font-black tracking-[0.3em] uppercase text-foreground/60">
-                  MEMUAT {activeServer?.server ?? "SERVER"}...
+                  MEMUAT {activeServer.server}...
                 </p>
               </div>
             </div>
           )}
+
           <iframe
-            key={activeServer?.url}
-            src={activeServer?.url}
-            title={`Player ${activeServer?.server ?? ""}`}
+            key={activeServer.url}
+            src={activeServer.url}
+            title={`Player ${activeServer.server}`}
             className="absolute inset-0 w-full h-full border-none z-10"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            onLoad={() => setIsLoading(false)}
+            onLoad={() => setLoadedFor(activeServer.url)}
             referrerPolicy="no-referrer"
           />
         </div>

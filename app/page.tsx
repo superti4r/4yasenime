@@ -1,4 +1,4 @@
-import { animeService } from "@/services/latest-releases";
+import { animeService } from "@/services/latest-releases-services";
 import { HeroSection } from "@/components/home/hero";
 import { AnimePoster } from "@/components/home/poster";
 import Link from "next/link";

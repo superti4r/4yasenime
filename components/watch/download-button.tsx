@@ -1,16 +1,21 @@
 "use client";
-import { Button } from "@/components/selia/button";
+
 import * as React from "react";
+import { Button } from "@/components/selia/button";
+
+type DownloadButtonProps = Omit<
+  React.ComponentProps<typeof Button>,
+  "render"
+> & {
+  url: string;
+  children: React.ReactNode;
+};
 
 export function DownloadButton({
   url,
   children,
   ...props
-}: {
-  url: string;
-  children: React.ReactNode;
-  [key: string]: any;
-}) {
+}: DownloadButtonProps) {
   return (
     <Button
       {...props}

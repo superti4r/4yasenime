@@ -31,18 +31,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-dvh flex-col pb-[calc(env(safe-area-inset-bottom)+6rem)]">
+          <div className="relative flex min-h-dvh flex-col">
             <main className="flex-1 relative">{children}</main>
-
-            <Footer />
 
             <div className="fixed bottom-0 left-0 right-0 z-[110] pointer-events-none flex justify-center pb-4">
               <div className="pointer-events-auto">
                 <Dock />
               </div>
             </div>
-          </div>
 
+            <Footer />
+          </div>
           <Toast />
         </Theme>
       </body>

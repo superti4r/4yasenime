@@ -3,37 +3,31 @@
 export const getPingStatus = async (): Promise<{
   online: boolean;
   ms: number | null;
+  code: number | null;
 }> => {
   const BASE_URL = process.env["4YASE_API"];
+  if (!BASE_URL) return { online: false, ms: null, code: null };
 
-  if (!BASE_URL) {
-    return { online: false, ms: null };
-  }
-
+  const base = BASE_URL.replace(/\/$/, "");
+  const targetUrl = `${base}/anime/stream/episode/__ping__`;
   const start = Date.now();
-  const targetUrl = BASE_URL.replace(/\/$/, "");
 
   try {
     const response = await fetch(targetUrl, {
       method: "GET",
       cache: "no-store",
-      headers: {
-        "User-Agent": "4yasenime-status-checker",
-      },
-      signal: AbortSignal.timeout(5000),
+      headers: { Accept: "application/json" },
+      signal: AbortSignal.timeout(2500),
     });
 
-    const end = Date.now();
+    const ms = Date.now() - start;
 
     return {
-      online: response.ok || response.status === 404 || response.status === 405,
-      ms: end - start,
+      online: true,
+      ms,
+      code: response.status,
     };
-  } catch (error) {
-    console.error("Ping Error:", error);
-    return {
-      online: false,
-      ms: null,
-    };
+  } catch {
+    return { online: false, ms: null, code: null };
   }
 };

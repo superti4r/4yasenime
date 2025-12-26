@@ -6,24 +6,34 @@ import { socialLinks, navLinks, supportLinks } from "@/additional/footer";
 import { getPingStatus } from "@/services/footer-services";
 
 export function Footer() {
-  const [status, setStatus] = useState<{ online: boolean; ms: number | null }>({
+  const [status, setStatus] = useState<{
+    online: boolean;
+    ms: number | null;
+    code: number | null;
+  }>({
     online: false,
     ms: null,
+    code: null,
   });
 
   useEffect(() => {
+    let alive = true;
+
     const fetchStatus = async () => {
       const result = await getPingStatus();
-      setStatus(result);
+      if (alive) setStatus(result);
     };
 
     fetchStatus();
     const interval = setInterval(fetchStatus, 1200000);
-    return () => clearInterval(interval);
+    return () => {
+      alive = false;
+      clearInterval(interval);
+    };
   }, []);
 
   return (
-    <footer className="w-full pt-24 pb-12 border-t border-white/5 bg-background">
+    <footer className="w-full pt-24 pb-[calc(env(safe-area-inset-bottom)+6rem)] border-t border-white/5 bg-background">
       <div className="px-6 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2 space-y-6">
@@ -110,11 +120,6 @@ export function Footer() {
               >
                 SERVER {status.online ? "ONLINE" : "OFFLINE"}
               </span>
-              {status.online && status.ms && (
-                <span className="text-muted-foreground/50 font-mono">
-                  [{status.ms}ms]
-                </span>
-              )}
             </div>
           </div>
         </div>
