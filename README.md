@@ -1,7 +1,7 @@
 
 # 4yasenime
 
-![Stars]([https://img.shields.io/github/stars/superti4r/4yasenime?style=social](https://img.shields.io/github/stars/superti4r/4yasenime))
+![GitHub Repo stars](https://img.shields.io/github/stars/superti4r/4yasenime)
 
 **4yasenime** adalah platform nonton anime gratis yang dibangun menggunakan Next.js 16. Hadir dengan UI yang ramah pengguna dan pengalaman menonton yang nyaman, aplikasi ini memudahkan kamu untuk mencari, menonton, dan menikmati anime favorit tanpa biaya!
 
