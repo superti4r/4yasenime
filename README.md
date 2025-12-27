@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 4yasenime
 
-First, run the development server:
+![Stars](https://img.shields.io/github/stars/superti4r/4yasenime?style=social)
+
+**4yasenime** adalah platform nonton anime gratis yang dibangun menggunakan Next.js 16. Hadir dengan UI yang ramah pengguna dan pengalaman menonton yang nyaman, aplikasi ini memudahkan kamu untuk mencari, menonton, dan menikmati anime favorit tanpa biaya!
+
+---
+
+## 🚀 Tech Stack
+
+- **Next.js 16**
+- **Selia Component**
+- **TailwindCSS 4**
+- **RestAPI**
+
+---
+
+## 🔧 Instalasi
+
+Ikuti langkah-langkah berikut untuk menjalankan project ini secara lokal:
 
 ```bash
+# Clone repository
+git clone https://github.com/superti4r/4yasenime.git
+cd 4yasenime
+
+# Install dependencies
+npm install
+# atau
+yarn install
+# atau
+pnpm install
+# atau
+bun install
+
+# Copy file environment
+cp .env.example .env
+# Edit file .env sesuai kebutuhan API
+
+# Jalankan development server
 npm run dev
-# or
+# atau
 yarn dev
-# or
+# atau
 pnpm dev
-# or
+# atau
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000) di browser untuk melihat hasilnya.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ✨ Fitur Utama
 
-## Learn More
+- Streaming anime gratis
+- UI modern dan responsif
+- Pencarian anime cepat
+- Detail episode dan genre
+- Dukungan multi-device
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Kontribusi
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Semua orang dapat berkontribusi dalam project ini! Silakan fork, buat pull request, atau diskusi di [Issues](https://github.com/superti4r/4yasenime/issues) untuk ide dan perbaikan.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 Referensi
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Selia Component](https://selia.nauv.al/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [RESTAPI](https://www.sankavollerei.com/anime/)
+
+---
+
+## 📦 Deploy
+
+Deploy mudah di [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) atau platform lain yang mendukung Next.js.
+
+---
+
+Selamat menonton anime dan berkontribusi!
