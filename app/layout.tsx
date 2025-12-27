@@ -4,6 +4,7 @@ import { Theme } from "@/components/plugin/theme";
 import { Dock } from "@/components/extra/dock";
 import { Footer } from "@/components/extra/footer";
 import { Toast } from "@/components/selia/toast";
+import { SearchCommandRoot } from "@/components/search/search-command-root";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -31,18 +32,21 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-dvh flex-col">
-            <main className="flex-1 relative">{children}</main>
+          <SearchCommandRoot>
+            <div className="relative flex min-h-dvh flex-col">
+              <main className="flex-1 relative">{children}</main>
 
-            <div className="fixed bottom-0 left-0 right-0 z-[110] pointer-events-none flex justify-center pb-4">
-              <div className="pointer-events-auto">
-                <Dock />
+              <div className="fixed bottom-0 left-0 right-0 z-[110] pointer-events-none flex justify-center pb-4">
+                <div className="pointer-events-auto">
+                  <Dock />
+                </div>
               </div>
+
+              <Footer />
             </div>
 
-            <Footer />
-          </div>
-          <Toast />
+            <Toast />
+          </SearchCommandRoot>
         </Theme>
       </body>
     </html>

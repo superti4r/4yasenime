@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Separator } from "@/components/selia/separator";
 import { cn } from "@/lib/utils";
 import { Menu } from "@/additional/menu";
+import { CommandTrigger } from "@/components/selia/command";
 
 export function Dock() {
   const pathname = usePathname();
@@ -40,35 +41,56 @@ export function Dock() {
                   className="mx-0.5 h-5 self-center opacity-10 hidden sm:block"
                 />
               )}
-              <Link href={item.href} className="relative">
-                <div
-                  className={cn(
-                    "flex items-center justify-center rounded-full transition-all duration-200",
-                    "h-10 w-10 sm:h-12 sm:w-12",
-                    isActive
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
-                  )}
-                >
-                  <Icon
-                    size={20}
-                    className="transition-transform duration-200"
-                    strokeWidth={isActive ? 2.5 : 2}
-                  />
 
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-dot"
-                      className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
+              {item.href === "/search" ? (
+                <CommandTrigger className="relative">
+                  <div
+                    className={cn(
+                      "flex items-center justify-center rounded-full transition-all duration-200",
+                      "h-10 w-10 sm:h-12 sm:w-12",
+                      isActive
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+                    )}
+                  >
+                    <Icon
+                      size={20}
+                      className="transition-transform duration-200"
+                      strokeWidth={isActive ? 2.5 : 2}
                     />
-                  )}
-                </div>
-              </Link>
+                  </div>
+                </CommandTrigger>
+              ) : (
+                <Link href={item.href} className="relative">
+                  <div
+                    className={cn(
+                      "flex items-center justify-center rounded-full transition-all duration-200",
+                      "h-10 w-10 sm:h-12 sm:w-12",
+                      isActive
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent/30"
+                    )}
+                  >
+                    <Icon
+                      size={20}
+                      className="transition-transform duration-200"
+                      strokeWidth={isActive ? 2.5 : 2}
+                    />
+
+                    {isActive && (
+                      <motion.span
+                        layoutId="active-dot"
+                        className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </div>
+                </Link>
+              )}
             </React.Fragment>
           );
         })}
