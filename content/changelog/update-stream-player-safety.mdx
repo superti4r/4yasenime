@@ -1,0 +1,46 @@
+---
+title: "Update: Stream Player Safety Mode (Safe / Compat / Loose)"
+date: "2025-12-27"
+status: "improved"
+summary: "Menambahkan mode sandbox bertingkat + fallback agar player lebih stabil di berbagai source embed."
+---
+
+Halo semuanya 👋
+
+Kali ini ada update penting di bagian **Stream Player** biar pengalaman nonton makin aman dan minim drama.
+
+Sekarang player punya **3 mode** yang bisa kamu ganti kalau ada server yang rewel atau gak mau jalan.
+
+## Yang baru
+
+- Mode player: **Safe / Compat / Loose**
+- Tombol mode di pojok kanan atas player
+- Kalau loading terlalu lama, muncul opsi cepat:
+  - **Compat**
+  - **Loose**
+  - **Tab Baru**
+- Mode yang kamu pilih bakal **diingat otomatis** per host (pakai localStorage)
+
+<Callout>
+  Kalau video gak jalan di mode Safe, coba pindah ke Compat. Kalau masih ngeyel,
+  baru pakai Loose.
+</Callout>
+
+## Kenapa ada mode begini?
+
+Karena beberapa source embed itu:
+
+- butuh izin ekstra (popups/forms)
+- punya aturan ketat soal sandbox
+- kadang gak mau jalan kalau terlalu “dibatesin”
+
+Jadi kita mulai dari yang aman dulu (**Safe**), lalu kamu bisa naikkan mode kalau perlu.
+
+## Rekomendasi pemakaian
+
+- **Safe** → default (paling aman)
+- **Compat** → kalau server gak mau play
+- **Loose** → kalau server super rewel (paling bebas)
+
+Terima kasih sudah pakai 4yasenime 🤍  
+Kalau nemu server yang masih bermasalah, kabarin ya biar bisa ditangani lebih rapi.
