@@ -38,7 +38,12 @@ export function ServerSelectCard({
 
       <Separator className="opacity-10 my-4" />
 
-      <Select value={value} onValueChange={onValueChange}>
+      <Select
+        value={value}
+        onValueChange={(next) =>
+          onValueChange(typeof next === "string" ? next : String(next ?? ""))
+        }
+      >
         <SelectTrigger
           variant="subtle"
           className="h-11 text-xs font-bold text-foreground"
