@@ -1,4 +1,4 @@
-import { Github, Instagram, LucideIcon } from "lucide-react";
+import { Github, Instagram, type LucideIcon } from "lucide-react";
 
 export interface FooterLink {
   label: string;
@@ -12,11 +12,11 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   { icon: Github, href: "https://github.com/superti4r" },
-  { icon: Instagram, href: "https://instagram.com/superti4r"}
+  { icon: Instagram, href: "https://instagram.com/superti4r" },
 ];
 
 export const navLinks: FooterLink[] = [
-  { label: "Trakteer", href: "#" },
+  { label: "Trakteer", href: "https://teer.id/superti4r" },
   { label: "Changelog", href: "/changelog" },
 ];
 
