@@ -1,6 +1,6 @@
 import { AnimeResponse } from "@/types/anime";
 
-const BASE_URL = process.env["4YASE_API"];
+const BASE_URL = process.env["AYASE_API"];
 
 export const animeService = {
   async getLatestReleases(): Promise<AnimeResponse> {

@@ -5,7 +5,7 @@ export const getPingStatus = async (): Promise<{
   ms: number | null;
   code: number | null;
 }> => {
-  const BASE_URL = process.env["4YASE_API"];
+  const BASE_URL = process.env["AYASE_API"];
   if (!BASE_URL) return { online: false, ms: null, code: null };
 
   const base = BASE_URL.replace(/\/$/, "");

@@ -1,6 +1,6 @@
 import type { StreamDataResponse } from "@/types/stream";
 
-const BASE_URL = process.env["4YASE_API"];
+const BASE_URL = process.env["AYASE_API"];
 
 function isObject(v: unknown): v is Record<string, unknown> {
   return typeof v === "object" && v !== null;

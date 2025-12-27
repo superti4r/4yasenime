@@ -1,6 +1,6 @@
 import { DetailAnimeResponse } from "@/types/detail-anime";
 
-const BASE_URL = process.env["4YASE_API"];
+const BASE_URL = process.env["AYASE_API"];
 
 export const detailAnimeService = {
   async getAnimeDetails(animeId: string): Promise<DetailAnimeResponse> {
