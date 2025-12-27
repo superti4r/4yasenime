@@ -22,9 +22,16 @@ type Props = {
   onPick?: () => void;
   className?: string;
   inputClassName?: string;
-
   detailHref?: (slug: string) => string;
 };
+
+type SearchAnimeWithType = SearchAnime & { type?: string };
+
+function getAnimeType(item: SearchAnime): string | null {
+  const rec = item as unknown as Record<string, unknown>;
+  const t = rec["type"];
+  return typeof t === "string" ? t : null;
+}
 
 export function AnimeSearchPanel({
   autoFocus,
@@ -82,8 +89,8 @@ export function AnimeSearchPanel({
         }
 
         setItems(Array.isArray(json.data) ? json.data : []);
-      } catch (e: any) {
-        if (e?.name === "AbortError") return;
+      } catch (e: unknown) {
+        if (e instanceof DOMException && e.name === "AbortError") return;
         setItems([]);
         setError("Terjadi error saat mencari.");
       } finally {
@@ -151,40 +158,43 @@ export function AnimeSearchPanel({
           </div>
         ) : (
           <div className="space-y-2">
-            {items.map((it) => (
-              <Link
-                key={it.slug}
-                href={detailHref(it.slug)}
-                onClick={onPick}
-                className={cn(
-                  "block rounded-xl border border-border/40",
-                  "bg-background/40 hover:bg-accent/30 transition-colors",
-                  "p-2"
-                )}
-              >
-                <div className="flex gap-3">
-                  <img
-                    src={it.poster}
-                    alt={it.title}
-                    className="h-16 w-12 rounded-lg object-cover border border-border/40"
-                    loading="lazy"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h4 className="truncate font-medium">{it.title}</h4>
-                      {"type" in it ? (
-                        <span className="shrink-0 text-xs text-muted-foreground">
-                          {(it as any).type}
-                        </span>
-                      ) : null}
+            {items.map((it) => {
+              const t = getAnimeType(it);
+              return (
+                <Link
+                  key={it.slug}
+                  href={detailHref(it.slug)}
+                  onClick={onPick}
+                  className={cn(
+                    "block rounded-xl border border-border/40",
+                    "bg-background/40 hover:bg-accent/30 transition-colors",
+                    "p-2"
+                  )}
+                >
+                  <div className="flex gap-3">
+                    <img
+                      src={it.poster}
+                      alt={it.title}
+                      className="h-16 w-12 rounded-lg object-cover border border-border/40"
+                      loading="lazy"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="truncate font-medium">{it.title}</h4>
+                        {t ? (
+                          <span className="shrink-0 text-xs text-muted-foreground">
+                            {t}
+                          </span>
+                        ) : null}
+                      </div>
+                      <p className="line-clamp-2 text-xs text-muted-foreground mt-1">
+                        {it.synopsis}
+                      </p>
                     </div>
-                    <p className="line-clamp-2 text-xs text-muted-foreground mt-1">
-                      {it.synopsis}
-                    </p>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
