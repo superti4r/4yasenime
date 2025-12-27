@@ -16,6 +16,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "4yasenime - Anime Streaming Platform",
   description: "Ultimate destination for anime enthusiasts.",
+  icons: {
+    icon: "/4yase.svg",
+    shortcut: "/4yase.svg",
+    apple: "/4yase.svg",
+  }
 };
 
 export default function RootLayout({
