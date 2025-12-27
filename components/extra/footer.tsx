@@ -42,8 +42,7 @@ export function Footer() {
             </h3>
             <p className="text-muted-foreground max-w-sm leading-relaxed text-sm font-medium">
               Platform streaming anime terlengkap dan gratis di Indonesia.
-              Nikmati ribuan judul anime dengan kualitas HD tanpa iklan yang
-              mengganggu.
+              Nikmati ribuan judul anime dengan kualitas HD.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social, i) => (

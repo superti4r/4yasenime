@@ -51,7 +51,7 @@ export function HeroSection({ featured }: { featured: Anime }) {
 
         <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl drop-shadow-md">
           Nikmati koleksi anime terbaru secara gratis dengan kualitas terbaik.
-          Pengalaman menonton tanpa iklan yang mengganggu hanya di{" "}
+          Pengalaman menonton hanya di{" "}
           <span className="text-foreground font-bold italic underline decoration-primary">
             4yasenime
           </span>
